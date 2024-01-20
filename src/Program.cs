@@ -36,6 +36,12 @@ app.MapGet("/albums", () =>
 })
 .WithName("GetAlbums");
 
+app.MapGet("/healthz", () =>
+{
+    return Album.GetAll();
+})
+.WithName("GetHealthz");
+
 app.Run();
 
 record Album(int Id, string Title, string Artist, double Price, string Image_url)
@@ -50,6 +56,6 @@ record Album(int Id, string Title, string Artist, double Price, string Image_url
             new Album(6, "Sweet Container O' Mine", "Guns N Probeses", 14.99, "https://aka.ms/albums-containerappslogo")
          };
 
-        return albums; 
+        return albums;
      }
 }
